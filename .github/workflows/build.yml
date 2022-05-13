@@ -34,6 +34,7 @@ jobs:
       PG_VERSION: ${{ matrix.pg_version }}
       PG_BRANCH: ${{ matrix.pg_version == 9.5 && 'REL9_5_STABLE' || matrix.pg_version == 9.6 && 'REL9_6_STABLE' || matrix.pg_version == 15 && 'master' || format('REL_{0}_STABLE', matrix.pg_version) }}
       PTRACK_PATCH_PG_BRANCH: ${{ matrix.pg_version <= 10 && 'off' || matrix.pg_version == 15 && 'master' || format('REL_{0}_STABLE', matrix.pg_version) }}
+      MODE: ${{ github.event.inputs.test_mode }}
 
     steps:
       - uses: actions/checkout@v2
